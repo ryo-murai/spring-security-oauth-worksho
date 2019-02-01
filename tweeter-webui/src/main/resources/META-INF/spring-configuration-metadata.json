@@ -1,0 +1,20 @@
+{
+  "groups": [
+	{
+      "name": "tweeter.api"
+	},
+	{
+      "name": "tweeter.auth"
+	}
+  ],
+  "properties": [
+    {
+	  "name": "tweeter.api.uri",
+	  "type": "java.net.URI"
+    },
+    {
+	  "name": "tweeter.auth.uri",
+	  "type": "java.net.URI"
+    }
+  ]
+}

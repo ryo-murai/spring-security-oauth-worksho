@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Tweeter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.11/css/uikit.min.css"/>
+</head>
+
+<body>
+
+<div class="uk-grid">
+    <div class="uk-width-1-5"></div>
+    <div class="uk-width-3-5">
+        <nav class="uk-navbar-container" uk-navbar="">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li th:classappend="${#httpServletRequest.requestURI == '/'} ? 'uk-active'"><a
+                            th:href="@{/}">Home</a></li>
+                    <li th:classappend="${#httpServletRequest.requestURI == '/tweets'} ? 'uk-active'"><a
+                            th:href="@{/tweets}">Tweets</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <h1>Tweeter</h1>
+        <form th:action="@{/tweets}" class="uk-panel uk-panel-box uk-form" method="post">
+            <span th:text="${#httpServletRequest.remoteUser}">user</span>
+            <input class="uk-input uk-form-width-large" type="text" name="text" placeholder="Tweet"
+                   required="required"/>
+            <button class="uk-button uk-button-primary">Send</button>
+        </form>
+        <br/>
+        <div class="uk-panel uk-panel-box" th:each="tweet : ${tweets}">
+            <h3 class="uk-panel-title" th:text="${tweet.text}">Hello</h3>
+            <span th:text="${tweet.username}">user</span> @ <span th:text="${tweet.createdAt}">2017-02-01</span>
+            <hr class="uk-divider-icon"/>
+        </div>
+    </div>
+    <div class="uk-width-1-5"></div>
+</div>
+</body>
+</html>
